@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'logo' => '<b>PWL</b>2',
+    'logo' => '<b>Admin</b>LTE',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -232,32 +232,30 @@ return [
         [
             'text' => 'blog',
             'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
+            'can'  => 'isAdmin',
         ],
         [
-            'text'        => 'Book',
+            'text'        => 'pages',
+            'url'         => 'admin/pages',
+            'icon'        => 'far fa-fw fa-file',
+            'label'       => 4,
+            'label_color' => 'success',
+        ],
+        [
+            'text'        => 'Buku',
             'url'         => 'admin/books',
-            'icon'        => 'fa fa-book',
+            'icon'        => 'fas fa-fw fa-book',
             'can'         => 'isAdmin',
         ],
-        // [
-        //     'text'        => 'pages',
-        //     'url'         => 'admin/pages',
-        //     'icon'        => 'far fa-fw fa-file',
-        //     'label'       => 4000,
-        //     'label_color' => 'success',
-        // ],
-
         ['header' => 'account_settings'],
         [
             'text' => 'profile',
-            'url'  => 'profil',
+            'url'  => 'profile',
             'icon' => 'fas fa-fw fa-user',
         ],
-
         [
             'text' => 'change_password',
-            'url'  => 'admin/settings',
+            'url'  => 'profile',
             'icon' => 'fas fa-fw fa-lock',
         ],
         [
@@ -311,7 +309,7 @@ return [
         ],
         [
             'text'       => 'information',
-            'icon_color' => 'green',
+            'icon_color' => 'cyan',
             'url'        => '#',
         ],
     ],

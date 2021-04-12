@@ -70,8 +70,13 @@
         <meta name="msapplication-TileColor" content="#ffffff">
         <meta name="msapplication-TileImage" content="{{ asset('favicon/ms-icon-144x144.png') }}">
     @endif
-    <!--Toastr-->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.css"></script>
+
+    <!-- Toastr -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    {{-- datepicker --}}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet"/>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+
 </head>
 
 <body class="@yield('classes_body')" @yield('body_data')>
@@ -101,41 +106,48 @@
             <livewire:scripts />
         @endif
     @endif
- <!--Toastr-->
- <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+    {{-- Custom Scripts --}}
+    @yield('adminlte_js')
+
+    <!-- Toastr -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
     {{-- Custom Scripts --}}
     @yield('adminlte_js')
 
     <script>
-        @if (Session::has('message'))
-        var type = "{{Session::get('alert-type')}}";;
+        @if(Session::has('message'))
+        var type = "{{Session::get('alert-type')}}";
         switch (type) {
-            case 'info' :
-                toastr.info("{{Session::get('message')}}");
+            case 'info':
+                    toastr.info("{{ Session::get('message') }}");
                 break;
-            case 'success' :
-                toastr.success("{{Session::get('message')}}");
+            case 'success':
+                    toastr.success("{{ Session::get('message') }}");
                 break;
-            case 'warning' :
-                toastr.warning("{{Session::get('message')}}");
+            case 'warning':
+                    toastr.warning("{{ Session::get('message') }}");
                 break;
-            case 'error' :
-                toastr.error("{{Session::get('message')}}");
+            case 'error':
+                    toastr.error("{{ Session::get('message') }}");
                 break;
         }
-
         @endif
 
         @if ($errors->any())
-            toastr.error("{{$errors}}");
-
+            toastr.error("{{ $errors }}");
         @endif
 
         $('#table-data').DataTable();
-
         let baseurl = "<?=url('/')?>";
         let fullURL = "<?=url()->full()?>";
     </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 
 </body>
 

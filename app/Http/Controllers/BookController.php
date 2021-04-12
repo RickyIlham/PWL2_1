@@ -17,7 +17,7 @@ class BookController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $books = books::all();
+        $books = Book::all();
         return view('book', compact('user', 'books'));
     }
 
@@ -39,7 +39,7 @@ class BookController extends Controller
      */
     public function store(Request $req)
     {
-        $book = new books;
+        $book = new Book;
 
         $book->judul = $req->get('judul');
         $book->penulis = $req->get('penulis');
@@ -100,7 +100,7 @@ class BookController extends Controller
      */
     public function update(Request $req)
     {
-        $book = books::find($req->get('id'));
+        $book = Book::find($req->get('id'));
 
         $book->judul = $req->get('judul');
         $book->penulis = $req->get('penulis');
@@ -140,13 +140,13 @@ class BookController extends Controller
      */
     public function getDataBuku($id)
     {
-        $buku = Books::find($id);
+        $buku = Book::find($id);
 
         return response()->json($buku);
     }
     public function destroy(Request $req)
     {
-        $book = Books::find($req->id);
+        $book = Book::find($req->id);
         Storage::delete('public/cover_buku/'.$req->get('old_cover'));
         $book->delete();
      
